@@ -17,7 +17,7 @@ export const ToDoAdd = () => {
 
     return (
         <div className={`max-w-md mx-auto p-6 ${theme=='dark'?"bg-gray-900":"bg-gray-200"} rounded-lg shadow-lg`}>
-            <h1 className={`text-2xl font-bold ${theme=='dark'?"text-gray-200":"text-black"} mb-4`}>Add To Do</h1>
+            <h1 className={`text-2xl font-bold ${theme=='dark'?"text-white":"text-black"} mb-4`}>Add To Do</h1>
 
             <label className={`flex items-center space-x-2 ${theme=='dark'?"text-gray-200":"text-black"}`}>
                 <input 

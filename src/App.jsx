@@ -34,6 +34,10 @@ export default function App(){
     }
   }
 
+  const handleDelete = (id) =>{
+    setTodos([...todos.filter(elm => elm.id !== id)])
+  }
+
   return <>
     <ToDoContext.Provider value={{
       todos,
@@ -44,7 +48,8 @@ export default function App(){
       onAdd:handleAdd,
       onChange:changeTodoState,
       theme,
-      onSetTheme:setTheme
+      onSetTheme:setTheme,
+      onDelete:handleDelete
       }}>
       <ToDoList />
     </ToDoContext.Provider>

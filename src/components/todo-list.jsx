@@ -9,7 +9,7 @@ export const ToDoList = () => {
     const {theme} = useContext(ToDoContext)
 
     return (
-        <div className={`flex items-center justify-center min-h-screen ${theme=='dark'?"bg-gray-900":"bg-gray-100"}`}>
+        <div className={`flex items-center justify-center min-h-screen ${theme=='dark'?"bg-gray-900":"bg-gray-300"}`}>
             <div className={`w-full max-w-2xl p-6 ${theme=='dark'?"bg-gray-800":"bg-white"} rounded-lg shadow-lg space-y-6`}>
                 <div>
                     <ThemeSwitcher />

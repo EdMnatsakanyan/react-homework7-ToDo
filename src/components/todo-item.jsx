@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Subtask } from "./subtask";
 
 export const ToDoItem = ({ todo }) => {
-    const { onUpdate, onChange, theme} = useContext(ToDoContext);
+    const { onUpdate, onChange, theme, onDelete} = useContext(ToDoContext);
 
     const [addMode, setAddMode] = useState(false);
     const {register, reset, handleSubmit, formState:{errors}} = useForm()
@@ -59,6 +59,7 @@ export const ToDoItem = ({ todo }) => {
                     </button>
 
                     <button 
+                        onClick={() => onDelete(todo.id)}
                         className="px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-md shadow hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-300">
                         Delete
                     </button>
