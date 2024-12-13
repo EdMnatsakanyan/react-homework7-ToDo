@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Subtask } from "./subtask";
 
 export const ToDoItem = ({ todo }) => {
-    const { onUpdate, onCompleteTodo, theme} = useContext(ToDoContext);
+    const { onUpdate, onChange, theme} = useContext(ToDoContext);
 
     const [addMode, setAddMode] = useState(false);
     const {register, reset, handleSubmit, formState:{errors}} = useForm()
@@ -21,7 +21,9 @@ export const ToDoItem = ({ todo }) => {
         found.completed = !found.completed
         setSubtasks([...subtasks])
         if(subtasks.every(elm => elm.completed)){
-            onCompleteTodo(todo)
+            onChange(todo, true)
+        }else{
+            onChange(todo, false)
         }
     }
 
@@ -40,7 +42,18 @@ export const ToDoItem = ({ todo }) => {
 
                 <div className="flex space-x-2 ml-4">
                     <button 
-                        onClick={() => onUpdate(todo.id)} 
+                        onClick={() => {
+                            onUpdate(todo.id)
+                            if(!todo.completed){
+                                setSubtasks([...subtasks.map(item => {
+                                    return {...item, completed:true}
+                                } )])
+                            } else {
+                                setSubtasks([...subtasks.map(item => {
+                                    return {...item, completed:false}
+                                } )])
+                            }
+                        }} 
                         className="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-300">
                         {todo.completed ? "Cancel" : "Complete"}
                     </button>

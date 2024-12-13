@@ -23,10 +23,15 @@ export default function App(){
     setTodos([...todos, {...todo, completed:false, id:Date.now(), subtasks:[]}])
   }
 
-  const completeTodo = (todo) =>{
+  const changeTodoState = (todo, isCompleted) =>{
     const found = todos.find(elm => elm.id === todo.id)
-    found.completed = true
-    setTodos([...todos])
+    if(isCompleted){
+      found.completed = true
+      setTodos([...todos])
+    } else {
+      found.completed = false
+      setTodos([...todos])
+    }
   }
 
   return <>
@@ -37,7 +42,7 @@ export default function App(){
       onFilter:setCurrentFilter,
       onUpdate: handleUpdate,
       onAdd:handleAdd,
-      onCompleteTodo:completeTodo,
+      onChange:changeTodoState,
       theme,
       onSetTheme:setTheme
       }}>
